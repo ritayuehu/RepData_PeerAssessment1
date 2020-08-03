@@ -25,14 +25,14 @@ stepstot <- with(rawdata, aggregate(steps, by = list(date)
                                     , FUN = sum, na.rm = TRUE))
 colnames(stepstot) <- c("date", "steps")
 
-png("plot1.png", width = 480, height = 480)
+# png("plot1.png", width = 480, height = 480)
 
 hist(stepstot$steps, main = "Histogram of total number of steps taken each day"
      , xlab = "Totl number of steps taken each day", col = "darkblue"
      , ylim = c(0, 20), breaks = seq(0, 25000, by = 2500)
      )
 
-dev.off()
+# dev.off()
 ```
 
 ```{r, echo = TRUE}
@@ -53,13 +53,13 @@ stepsavg <- with(rawdata, aggregate(steps, by = list(interval),
                                     FUN = mean, na.rm = TRUE))
 colnames(stepsavg) <- c("interval", "steps")
 
-png("plot2.png", width = 480, height = 480)
+# png("plot2.png", width = 480, height = 480)
 
 plot(stepsavg$interval, stepsavg$steps, type = "l", col = "darkblue"
    , lwd = 2, xlab = "Interval", ylab = "Average number of steps"
    , main = "Average daily activity pattern")
 
-dev.off()
+# dev.off()
 ```
 
 ```{r, echo = TRUE}
@@ -108,14 +108,14 @@ stepstot_new <- with(newdata, aggregate(steps, by = list(date)
                                     , FUN = sum, na.rm = TRUE))
 colnames(stepstot_new) <- c("date", "steps")
 
-png("plot3.png", width = 600, height = 500)
+# png("plot3.png", width = 600, height = 500)
 
 hist(stepstot_new$steps, main = "Histogram of total number of steps taken each day, after filling NA values"
      , xlab = "Totl number of steps taken each day", col = "darkblue"
      , ylim = c(0, 30), breaks = seq(0, 25000, by = 2500)
      )
 
-dev.off()
+# dev.off()
 
 # After imputing missing values, both the mean and median increase; but the mean increases larger than the median
 mean(stepstot_new$steps, na.rm = TRUE) # 10766.19
@@ -148,12 +148,12 @@ colnames(stepsavg_new) <- c("interval", "daycat", "steps")
 
 library(lattice)
 
-png("plot4.png", width = 480, height = 480)
+# png("plot4.png", width = 480, height = 480)
 
 xyplot(steps ~ interval | daycat, stepsavg_new, type = "l", layout = c(1, 2)
      , xlab = "Interval", ylab = "Number of steps", lwd = 2, color = "darkblue")
 
-dev.off()
+# dev.off()
 ```
 
 
